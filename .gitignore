@@ -1,6 +1,25 @@
+# Maven
 target/
 *.log
+
+# IntelliJ IDEA
 .idea/
 *.iml
-.DS_Store
+*.iws
+
+# VS Code
 .vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Test Server (if applicable)
+run/
+server/
