@@ -1,0 +1,17 @@
+messages:
+  toggle-on: "&aMobHealth表示有効"
+  toggle-off: "&cMobHealth表示が無効化されています"
+  reload: "&aMobHealth設定の再読み込みが完了しました"
+  no-permission: "&cこのコマンドを使用する権限がありません"
+
+# 表示設定
+display:
+  hp-format: "&aHP: &a{hp}"
+  damage-format: "&c- {damage}"
+  view-distance: 16.0 # HPバーを表示する最大距離 (ブロック)
+
+# 除外設定
+blacklist:
+  # 無効にするエンティティタイプ (大文字)
+  entities:
+    - ARMOR_STAND

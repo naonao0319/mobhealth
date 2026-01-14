@@ -1,0 +1,20 @@
+name: MobHealth
+api: ["1.21"]
+version: '${project.version}'
+main: com.mobhealth.MobHealth
+api-version: 1.21
+depend: [ProtocolLib]
+description: モブのダメージをディスプレイに表示するプラグイン
+author: naonao
+permissions:
+  mobhealth.see:
+    description: Allows player to see mob health and toggle display
+    default: true
+  mobhealth.reload:
+    description: Allows player to reload plugin configuration
+    default: op
+
+commands:
+  health:
+    description: MobHealth command
+    usage: /health <toggle|reload>
