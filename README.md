@@ -84,6 +84,7 @@ display:
 blacklist:
   entities:
     - ARMOR_STAND                # 表示しないエンティティタイプ
+    - VILLAGER                   # 例: 村人を除外する場合
 ```
 
 ### インストール方法
