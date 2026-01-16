@@ -42,6 +42,8 @@ public class DamageListener implements Listener {
 
     // Cache the serializer to avoid lookups every tick
     private static WrappedDataWatcher.Serializer componentSerializer;
+    private static WrappedDataWatcher.Serializer vector3fSerializer;
+    private static boolean vector3fSerializerChecked = false;
 
     private static class HpBarSession {
         final int entityId;
@@ -68,6 +70,18 @@ public class DamageListener implements Listener {
             componentSerializer = Registry.getChatComponentSerializer(false);
         }
         return componentSerializer;
+    }
+
+    private WrappedDataWatcher.Serializer getVector3fSerializer() {
+        if (!vector3fSerializerChecked) {
+            try {
+                vector3fSerializer = Registry.get(Vector3f.class);
+            } catch (Throwable e) {
+                plugin.getLogger().warning("Could not find Vector3f serializer. Translation metadata will be skipped. Ensure ProtocolLib is up to date.");
+            }
+            vector3fSerializerChecked = true;
+        }
+        return vector3fSerializer;
     }
 
     @EventHandler
@@ -208,7 +222,10 @@ public class DamageListener implements Listener {
         dataValues.add(new WrappedDataValue(5, Registry.get(Boolean.class), true));
 
         // Translation (Index 11 for 1.21.1)
-        dataValues.add(new WrappedDataValue(11, Registry.get(Vector3f.class), new Vector3f(0f, 0.2f, 0f)));
+        WrappedDataWatcher.Serializer vecSerializer = getVector3fSerializer();
+        if (vecSerializer != null) {
+            dataValues.add(new WrappedDataValue(11, vecSerializer, new Vector3f(0f, 0.2f, 0f)));
+        }
 
         // Index 15: Billboard (Byte) - 3 = CENTER (Correct for 1.21.1)
         dataValues.add(new WrappedDataValue(15, Registry.get(Byte.class), (byte) 3));

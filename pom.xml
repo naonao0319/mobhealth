@@ -6,7 +6,7 @@
 
     <groupId>com.mobhealth</groupId>
     <artifactId>mobhealth</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>MobHealth</name>
