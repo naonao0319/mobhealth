@@ -42,7 +42,7 @@ blacklist:
 ```
 
 ### Installation
-1. Download `mobhealth-1.0.1.jar`.
+1. Download `mobhealth-1.0.2.jar`.
 2. Place it in your server's `plugins` folder.
 3. Make sure you have **ProtocolLib** installed.
 4. Restart the server.
@@ -88,7 +88,7 @@ blacklist:
 ```
 
 ### インストール方法
-1. `mobhealth-1.0.1.jar` をダウンロードします。
+1. `mobhealth-1.0.2.jar` をダウンロードします。
 2. サーバーの `plugins` フォルダに入れます。
 3. **ProtocolLib** が導入されていることを確認してください。
 4. サーバーを再起動します。
