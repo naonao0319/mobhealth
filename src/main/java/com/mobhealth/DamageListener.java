@@ -219,7 +219,10 @@ public class DamageListener implements Listener {
         dataValues.add(new WrappedDataValue(23, getComponentSerializer(), wrappedText.getHandle()));
 
         // Index 5: No Gravity (Boolean)
-        dataValues.add(new WrappedDataValue(5, Registry.get(Boolean.class), true));
+        WrappedDataWatcher.Serializer boolSerializer = Registry.get(Boolean.class);
+        if (boolSerializer != null) {
+             dataValues.add(new WrappedDataValue(5, boolSerializer, true));
+        }
 
         // Translation (Index 11 for 1.21.1)
         WrappedDataWatcher.Serializer vecSerializer = getVector3fSerializer();
@@ -228,10 +231,16 @@ public class DamageListener implements Listener {
         }
 
         // Index 15: Billboard (Byte) - 3 = CENTER (Correct for 1.21.1)
-        dataValues.add(new WrappedDataValue(15, Registry.get(Byte.class), (byte) 3));
+        WrappedDataWatcher.Serializer byteSerializer = Registry.get(Byte.class);
+        if (byteSerializer != null) {
+            dataValues.add(new WrappedDataValue(15, byteSerializer, (byte) 3));
+        }
 
         // Index 25: Background Color (Integer) - 0 = Transparent (Correct for 1.21.1)
-        dataValues.add(new WrappedDataValue(25, Registry.get(Integer.class), 0));
+        WrappedDataWatcher.Serializer intSerializer = Registry.get(Integer.class);
+        if (intSerializer != null) {
+            dataValues.add(new WrappedDataValue(25, intSerializer, 0));
+        }
 
         metadataPacket.getDataValueCollectionModifier().write(0, dataValues);
 
@@ -309,8 +318,15 @@ public class DamageListener implements Listener {
         // Use Index 23 for Text (1.21.1)
         dataValues.add(new WrappedDataValue(23, getComponentSerializer(), wrappedText.getHandle()));
         
-        dataValues.add(new WrappedDataValue(15, Registry.get(Byte.class), (byte) 3)); // Billboard (1.21.1)
-        dataValues.add(new WrappedDataValue(25, Registry.get(Integer.class), 0)); // Background (1.21.1)
+        WrappedDataWatcher.Serializer byteSerializer = Registry.get(Byte.class);
+        if (byteSerializer != null) {
+            dataValues.add(new WrappedDataValue(15, byteSerializer, (byte) 3)); // Billboard (1.21.1)
+        }
+        
+        WrappedDataWatcher.Serializer intSerializer = Registry.get(Integer.class);
+        if (intSerializer != null) {
+            dataValues.add(new WrappedDataValue(25, intSerializer, 0)); // Background (1.21.1)
+        }
 
         metadataPacket.getDataValueCollectionModifier().write(0, dataValues);
 
